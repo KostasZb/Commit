@@ -1,0 +1,22 @@
+﻿@model IEnumerable<WebApplication3.Models.CauseModel>
+
+@if ((int)Session["memberId"] == 1)
+{
+<div class="row mt-3 justify-content-center" id="causesSection">
+    @foreach (var item in Model)
+    {
+        <div class="card-deck m-2 col-lg-2 col-md-6 bg-light rounded" id="causeCard">
+            <div class="card-body">
+                <img class="card-img-top img-fluid rounded-circle TypeOfPhoto @Html.DisplayFor(modelItem => item.causetype)" src="" alt="Cause image" id="@Html.DisplayFor(modelItem => item.causetype)" />
+                <h5 class="card-title font-weight-bold">@Html.DisplayFor(modelItem => item.name)</h5>
+                <p class="card-text">Involved Organisation: @Html.DisplayFor(modelItem => item.orgInvolved)</p>
+                <p class="card-text signatureCount" id="@Html.DisplayFor(modelItem => item.id)">
+                    @Html.DisplayFor(modelItem => item.PeopleSigned.Count) commited!
+                </p>
+                @Html.ActionLink("View the Cause", "CauseDetailsPage", "Causes", new { id = item.id }, new { @class = "btn btn-secondary" })
+                @Html.ActionLink("Delete", "DeleteCause", "Profile", new { causeID = item.id }, new { @class = "btn btn-secondary" })
+            </div>
+        </div>
+    }
+</div>
+}

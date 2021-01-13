@@ -1,0 +1,59 @@
+﻿@model WebApplication3.Models.CauseModel
+@{
+    var selectedCause = ViewData.Model;
+}
+@{
+    ViewBag.Title = "CauseDetails";
+}
+
+@*Displaying the details of the cause *@
+<div class="row causeDetails" id="@Html.DisplayFor(modelItem => selectedCause.id)">
+    <div class="col-sm-9 mb-2 mt-2 text-center container">
+        <h1 class="font-weight-bold font-italic">@Html.DisplayFor(modelItem => selectedCause.name)</h1>
+        <div class="row container-fluid d-flex justify-content-center">
+            <div class="col-4">
+                <img class="img-fluid m-3 rounded-circle @Html.DisplayFor(modelItem => selectedCause.causetype) TypeOfPhoto" src="" alt="photoOfType" id="@Html.DisplayFor(modelItem => selectedCause.causetype)" />
+            </div>
+            <div class="container">
+                <div class="bg-light rounded container infoTreeLeftOne flex-column">
+                    <h2 class="font-weight-bold">Organization involved</h2>
+                    <p>@Html.DisplayFor(modelItem => selectedCause.orgInvolved)</p>
+                </div>
+                <div class="bg-light infoTreeRightOne rounded container flex-column">
+                    <h2 class="font-weight-bold">Groups affected</h2>
+                    <p>@Html.DisplayFor(modelItem => selectedCause.groups)</p>
+                </div>
+                <div class="bg-light infoTreeLeftTwo rounded container flex-column">
+                    <h2 class="font-weight-bold">Information about the Cause</h2>
+                    <p>@Html.DisplayFor(modelItem => selectedCause.description)</p>
+                </div>
+            </div>
+        </div>
+        @*Generating the button to sign the cause if you are logged in*@
+        @if (Session["memberID"] != null)
+        {
+            <button class="btn btn-secondary mt-3" id="signButton">Sign the Cause </button>
+        }
+    </div>
+    @*Displaying the Signature count and the names of the people signed the cause*@
+    <div class="col-sm-3  mb-2 mt-2 border-left">
+
+        <h2 class="signatureCount font-weight-bold" id="@Html.DisplayFor(modelItem => selectedCause.id)">@Html.DisplayFor(modelItem => selectedCause.PeopleSigned.Count) Commited!</h2>
+        <ul class="list-group peopleSignedList" id="@Html.DisplayFor(modelItem => selectedCause.id)">
+            @foreach (var member in Model.PeopleSigned)
+            {
+                <li class=" list-group-item border-0">
+                    @member.firstName @member.lastName
+                </li>
+            }
+        </ul>
+        @*Sharing the cause on social media*@
+        <h2 class="m-3 font-weight-bold">Share on:</h2>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=@Request.Url.ToString()" target="blank"><btn id="shareBtnFacebook" class="btn"><img src="~/Content/37409.png" alt="Photo of Facebook Link to Share" class="rounded socialCause" /></btn></a>
+        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" target="blank"><btn id="shareBtnTwitter" class="btn"><img src="~/Content/60580.png" alt="Photo of twitter" class="rounded socialCause" /></btn></a>
+    </div>
+</div>
+@section Scripts{
+    <script>
+    </script>
+}

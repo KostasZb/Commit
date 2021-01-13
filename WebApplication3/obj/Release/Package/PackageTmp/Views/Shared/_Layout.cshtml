@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Style/StyleSheet1.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="p-0 text-center">
+    @*Scallable Navigation bar *@
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
+        <div class="container-fluid">
+            @Html.ActionLink("Commit!", "Index", "Home", new { area = "" }, new { @class = "navbar-brand logoNavBar" })
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav ">
+                    <li class="nav-item">
+                        @Html.ActionLink("View Causes", "Index", "Causes", new { area = "" }, new { @class = "nav-link text-light" })
+                    </li>
+                    <li class="nav-item" id="createACauseNav">
+                        @if (Session["memberId"] != null)
+                        {
+                            @Html.ActionLink("Create a Cause", "Index", "CreateACause", new { area = "" }, new { @class = "nav-link text-light" })
+                        }
+                    </li>
+                    <li class="nav-item" id="LoginSignupNav">
+                        @if (Session["memberId"] == null)
+                        {
+                            @Html.ActionLink("Log in/Sign Up", "Index", "Users", new { area = "" }, new { @class = "nav-link text-light" })
+                        }
+                    </li>
+
+                    <li class="nav-item" id="ProfileNav">
+                        @if (Session["memberId"] != null)
+                        {
+                            @Html.ActionLink("View Profile", "Index", "Profile", new { id = Session["memberId"] }, new { @class = "nav-link text-light" })
+                        }
+                    </li>
+                </ul>
+                @if (Session["memberId"] != null)
+                {
+                    <span class="text-success container justify-content-center justify-content-md-end memberNavBar" id="@Session["memberId"]">@Session["memberName"].ToString()</span>
+                    @Html.ActionLink("Log out", "LogOut", "Users", new { area = "" }, new { @class = "btn btn-outline-danger btn-dark rounded logOutBtn" })
+                }
+            </div>
+        </div>
+    </nav>
+    @RenderBody()
+
+    @*Social media links*@
+    <footer class="text-center lead pb-3 pt-3">
+        Follow us on:
+        <a href="https://www.facebook.com/sharer/sharer.php?u=@Request.Url.ToString()" target="blank"><img class="image-fluid rounded-circle social" src="~/Content/37409.png" alt="Facebook link" name="facebookLink" /> </a>
+        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" target="blank"><img class="image-fluid rounded-circle social" src="~/Content/60580.png" alt="Twitter link" name="twitterLink" /></a>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/popper")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/JavaScriptFiles.js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

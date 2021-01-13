@@ -1,0 +1,82 @@
+﻿@model IEnumerable<WebApplication3.Models.CauseModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+@*Home page banner*@
+<div class="jumbotron-fluid container-fluid imageWelcomeJumbo" id="imageWelcomeJumbo" >
+    <img class=" img-fluid " id="imageWelcome"src="~/Content/bannerCity.JPG" alt="Welcome Image"  />
+    <h1 class="font-italic" id="textInImg">Welcome to Commit !</h1>
+</div>
+@*Main content of Home page with information about the website*@
+        <div class="mb-2  container-fluid">
+            <div class="container-fluid d-flex justify-content-start text-center mt-5 mb-5">
+                <div class="w-50 bg-light rounded infoTreeRightOne">
+                    <h2 class="flex-column font-weight-bolder">What is Commit!?</h2>
+                    <div class="flex-column">Commit! is a way of of identifying common issues that trouble various social groups,caused by the activity of an organisation. </div>
+                    <div class="flex-column">Commit! is a place where everyone can create a cause and encourage people to commit against doing buisness with the organization at fault </div>
+                </div>
+            </div>
+
+            <div class="container-fluid d-flex justify-content-md-end text-center mt-5 mb-5 ">
+                <div class="w-50 bg-light rounded infoTreeLeftOne">
+                    <h2 class="flex-column font-weight-bolder">Who are we?</h2>
+                    <div class="flex-column ">We are just some friends who decided it would be nice to have a place where we can share our experiences and concerns</div>
+                    <div class="flex-column ">Our purpose was to create a platform to make public harmful behaviour of organizations for the betterment of society and life!</div>
+                </div>
+            </div>
+
+            <div class="container-fluid d-flex justify-content-start text-center mt-5 mb-5 ">
+                <div class="w-50 bg-light rounded infoTreeRightTwo">
+                    <h2 class="flex-column font-weight-bolder">Who can Create a Cause?</h2>
+                    <div class="flex-column ">Anyone with who feels that the an organisation, company or any other entity is causing harm.</div>
+                    <div class="flex-column ">If you have an email address you can go ahead and create an account and you are ready to start creating causes.</div>
+                </div>
+            </div>
+
+            <div class="container-fluid d-flex justify-content-md-end text-center mt-5 mb-5 ">
+                <div class="w-50 bg-light rounded infoTreeLeftTwo">
+                    <h2 class="flex-column font-weight-bolder">What do the Cause colours represent?</h2>
+                    <div class="flex-column ">The different colors associated with each Cause represent the category that the cause falls in.</div>
+                    <div class="flex-column ">Yellow is for Tax Avoidance, purple for Unfair Employment Practices, red for Racism, green for Environment Harm and blue for Others.</div>
+                </div>
+            </div>
+
+
+            <div class="container-fluid d-flex text-center mt-5 mb-5 ">
+                <div class="w-50 bg-light rounded infoTreeRightThree">
+                    <h2 class="flex-column font-weight-bolder">How does this change anything?</h2>
+                    <div class="flex-column ">Informing the society about the unethical pratices of an organisation is the first step.</div>
+                    <div class="flex-column ">The second step is gathering enough commits! for the organisation to understand that their practices were noticed and people are reacting.</div>
+                </div>
+            </div>
+        </div>
+        @*Latest Causes Section*@
+        <hr class=" bg-light "/>
+            <h2 class="  text-center font-weight-bolder mt-4">Latest Causes</h2>
+            <div class="row mt-3 justify-content-center">
+
+
+                @foreach (var item in Model.Reverse())
+                {
+                    <div class="card-deck mb-2 col-lg-2 col-md-6 m-2 ">
+                        <div class="card-body">
+                            <img class="card-img-top rounded-circle img-fluid TypeOfPhoto @Html.DisplayFor(modelItem => item.causetype)" src="" alt="Cause image" />
+                            <h5 class="card-title font-weight-bold">@Html.DisplayFor(modelItem => item.name)</h5>
+                            <p class="card-text signatureCount" id="@Html.DisplayFor(modelItem => item.id)">@Html.DisplayFor(modelItem => item.PeopleSigned.Count) Commited!</p>
+                        </div>
+                    </div>
+                    if (Model.Count() > 5)
+                    {
+                        if (Model.ElementAt(Model.Count() - 5) == item)
+                        {
+                            break;
+                        }
+                    }
+                }
+            </div>
+
+
+
+
+    
+

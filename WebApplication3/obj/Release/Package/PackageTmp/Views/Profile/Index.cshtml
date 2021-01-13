@@ -1,0 +1,64 @@
+﻿@model WebApplication3.Models.Member
+@{
+    var selectedMember = ViewData.Model;
+}
+@{
+    ViewBag.Title = "Index";
+}
+<h1>
+    @Html.DisplayFor(modelItem => selectedMember.firstName) @Html.DisplayFor(modelItem => selectedMember.lastName)'s profile
+</h1>
+@if (selectedMember.admin)
+{
+    <h2 class="text-warning">Admin Account</h2>
+}
+<div class="container ">
+    <h2>My Details</h2>
+    <div class="d-flex-row row justify-content-center bg-light">
+        <div class=" m-5 "><span class="border rounded p-2 bg-white">First Name: @Html.DisplayFor(modelItem => selectedMember.firstName) </span></div>
+        <div class=" m-5 "><span class="border rounded p-2 bg-white">Last Name: @Html.DisplayFor(modelItem => selectedMember.lastName) </span></div>
+        <div class=" m-5"><span class="border rounded p-2 bg-white">Email Address: @Html.DisplayFor(modelItem => selectedMember.email) </span></div>
+    </div>
+</div>
+<hr />
+<div class="mt-3">
+    @if (selectedMember.admin)
+    {
+        <h2>All available causes</h2>
+    }
+    else
+    {
+        <h2>Causes I have signed</h2>
+    }
+</div>
+
+@* Text input for searching with keyword and dropdown with options regarding the type of cause that enable filtering with jquery*@
+<div class="container justify-content-center rounded p-2">
+    <div class="row  p-2 m-2">
+        <select class="form-control mb-3 col-5" id="causeTypeDropdown">
+            <option disabled="" selected="" value="">Select a type of Cause</option>
+            <option class="taxAvoidFilter" value="TaxAvoidance">Tax avoidance</option>
+            <option class="unfairEmplFilter" value="UnfairEmployment">Unfair employment practices</option>
+            <option class="racismFilter" value="Racism">Racism</option>
+            <option class="environmentFilter" value="Environment">Environmental damage</option>
+            <option class="otherFilter" value="Other">Other unethical practice</option>
+        </select>
+        <span class="col-2"></span>
+        <input class="form-control col-5 mb-3" id="searchBar" type="text" placeholder="Search...">
+        <div class="col-4"></div>
+    </div>
+</div>
+
+@if (selectedMember.admin)
+{
+    <div>
+        @Html.Action("CausesList")
+    </div>
+}
+else
+{
+    <div class="container-fluid">
+        @Html.Action("SignedCausesList", "Profile", new { id = Session["memberID"] })
+    </div>
+}
+

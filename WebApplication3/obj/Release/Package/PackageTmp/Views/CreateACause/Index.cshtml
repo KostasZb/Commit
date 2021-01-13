@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Create a new Cause";
+}
+
+<h1 class="pageTitle m-3">Create a new Cause</h1>
+
+@*Cause creating form using HTML post to add to database*@
+<form method="post" class="container" action="/CreateACause/AddACause">
+    <div class="container-fluid bg-light p-3">
+        <div class="row p-3">
+            <input type="text" class="form-control mt-3 col-5" placeholder="Name of the Cause" name="nameTxt" required />
+            <span class="col-2"></span>
+            <input type="text" class="form-control mt-3 col-5" placeholder="Organization involved" name="orgInvolvedTxt" required />
+        </div>
+        <div class="row bg-light p-3">
+            <select class="form-control mt-3 col-5" id="causeTypeDropdown" name="dropDownCauseType" required>
+                <option disabled="" selected="" value="">Select a type of Cause</option>
+                <option value="TaxAvoidance">Tax avoidance</option>
+                <option value="UnfairEmployment">Unfair employment practices</option>
+                <option value="Racism">Racism</option>
+                <option value="Environment">Environmental damage</option>
+                <option value="Other">Other unethical practice</option>
+            </select>
+            <span class="col-2"></span>
+            <input type="text" class="form-control mt-3 col-5" placeholder="Affected groups" name="groupsTxt" required />
+        </div>
+        <div class="row bg-light container-fluid p-3">
+            <textarea class="form-control mt-3 col " rows="5" placeholder="Some details about the Cause" name="detailsTxt" required></textarea>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-secondary mt-3 mb-3 ">Create the Cause</button>
+</form>

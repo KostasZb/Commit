@@ -1,0 +1,114 @@
+﻿body {
+    font-family: 'Courier New';
+}
+.social {
+    height: 30px;
+    box-shadow:3px 3px gray;
+}
+
+.logoNavBar {
+    color:white !important;
+    font-family:Impact;
+    letter-spacing:2px;
+    text-shadow:1px 1px black;
+}
+
+.infoTreeLeftOne {
+    border-left: solid;
+    border-width: thick;
+    border-left-color: crimson;
+}
+.infoTreeRightOne {
+    border-right: solid;
+    border-width: thick;
+    border-right-color: chartreuse;
+}
+
+.infoTreeLeftTwo {
+    border-left: solid;
+    border-width: thick;
+    border-left-color: gold;
+}
+
+.infoTreeRightTwo {
+    border-right: solid;
+    border-width: thick;
+    border-right-color: aqua;
+}
+
+.infoTreeRightThree {
+    border-right: solid;
+    border-width: thick;
+    border-right-color: darkorchid;
+}
+
+.imageWelcomeJumbo {
+    position: relative;
+}
+
+#textInImg {
+    font-family:Impact;
+    text-shadow:1px 1px black;
+    color:white;
+    position: absolute;
+    top: 45%;
+    left: 0;
+    width: 100%;
+    animation-name:welcome;
+    animation-duration:10s;
+}
+@keyframes welcome{
+    0% {
+        color: white;
+        opacity: 0;
+        font-size: 12px;
+        
+    }
+    12.5% {
+        color: aqua;
+        opacity: 0.2;
+        
+    }
+    25% {
+        color: chartreuse;
+        opacity: 0.4;
+        
+    }
+    37.5% {
+        color: darkorchid;
+        opacity: 0.6;
+        
+    }
+    50% {
+        color: crimson;
+        opacity: 0.8;
+        
+    }
+    75% {
+        color: gold;
+        opacity: 1;
+        
+    }
+    100% {
+        color: white;
+        
+    }
+
+}
+
+.socialCause {
+    height: 30px;
+    box-shadow: 3px 3px gray;
+}
+
+.nav-link {
+    color: white !important;
+    font-family: Impact;
+    letter-spacing: 2px; 
+}
+
+.TypeOfPhoto{
+    max-height:80px;
+    max-width:80px;
+}
+

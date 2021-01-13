@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "LogInSignUp";
+}
+<div class="container-fluid" id="userLoginSignUp">
+    <div class="row ">
+        <!--Log in form-->
+        <div class="form-group col d-flex flex-column m-3">
+            <h2 class="text-center font-weight-bold">Log In</h2>
+            <div class="d-flex justify-content-center">
+                <input type="email" class="form-control mt-3" id="emailLogIn" placeholder="Enter email" name="emailLogIn">
+            </div>
+            <div class="d-flex justify-content-center">
+                <input type="password" class="form-control mt-3" id="passwordLogIn" placeholder="Enter password" name="passwordLogIn">
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-secondary mt-3" id="logInButton">Log in</button>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+
+        <!--Sign up form-->
+        <div class="form-group col d-flex flex-column m-3">
+            <h2 class="text-center font-weight-bold">Sign Up</h2>
+            <div class="d-flex justify-content-center">
+                <input type="text" class="form-control mt-3" placeholder="First Name" name="firstName" id="fName" />
+            </div>
+            <div class="d-flex justify-content-center">
+                <input type="text" class="form-control mt-3" placeholder="Last Name" name="lastName" id="lName" />
+            </div>
+            <div class="d-flex justify-content-center">
+                <input type="email" class="form-control mt-3" placeholder="Email Address" name="emailSignUp" id="emailSignUp" />
+            </div>
+            <div class="d-flex justify-content-center">
+                <input type="password" class="form-control mt-3" placeholder="Password" name="passwordSignUp" id="passwordSignUp" />
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-secondary mt-3" id="signUpButton">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+    </script>
+}
